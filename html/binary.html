@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binary Search</title>
+</head>
+<body>
+    <h2>BINARY SEARCH</h2>
+    <label for="array">Enter array elements(comma seperated ) :</label>
+    <input type="text" id="array" name="array" placeholder="2, 5, 8, 12, 16, 23, 38, 56, 72, 91"><br><br>
+    <label for="key">Enter key to search :</label>
+    <input type="text" id="key" name="key"><br><br>
+    <input type="button" value="Search" onclick="binarySearch()">
+    <br><br>
+    <label for="result">Result :</label>
+    <input type="text" id="result" readonly>
+    <script>
+        function binarySearch() {
+            var arr = document.getElementById('array').value;
+            var key = parseInt(document.getElementById('key').value);
+            var array1 = arr.split(",");
+            var array = array1.sort(function(a, b) {
+                return a - b
+            });
+            var low = 0;
+            var high = array.length - 1;
+            var mid = parseInt((low + high) / 2);
+            while (low <= high) {
+                if (key == array[mid]) {
+                    document.getElementById('result').value = "Element found at index " + mid;
+                    break;
+                } else if (key < array[mid]) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+                mid = parseInt((low + high) / 2);
+            }
+            if (low > high) {
+                document.getElementById('result').value = "Element not found";
+            }
+        }
+        </script>
+</body>
+</html>

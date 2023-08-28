@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counting Reviews</title>
+</head>
+<body>
+    <h2>Counting Reviews</h2>
+    <input type="button" value="Start" onclick="count()" />
+    <label for="result1">Good:</label>
+    <input type="text" id="result1" readonly />
+    <label for="result2">Bad:</label>
+    <input type="text" id="result2" readonly />
+    <script>
+        function count(){
+            let g=0;
+            let b=0;
+            var n=parseInt(prompt("Enter the number of reviews"));
+            const arr=[];
+            for (let i = 0; i < n; i++)
+            {
+            const r = prompt('Enter review (good/bad):');
+            arr.push(r);
+            }
+            for (let i = 0; i < arr.length; i++)
+            {
+            if (arr[i] === "good") 
+            {
+            g++;
+            } 
+            else if (arr[i] === "bad")
+            {
+            b++;
+            }
+            }
+            document.getElementById("result1").value = g;
+            document.getElementById("result2").value = b;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess Game</title>
+</head>
+<body>
+    <h2>Guess Game</h2>
+    <label for="guess">Enter your guess :</label>
+    <input type="text" id="guess" name="guess"><br><br>
+    <input type="button" value="Check" onclick="checkGuess()">
+    <br><br>
+    <label for="result">Result :</label>
+    <input type="text" id="result" readonly>
+    <script>
+        function checkGuess() {
+            var c=0;
+            while(c<=3){
+                var guess = parseInt(document.getElementById('guess').value);
+                var random = parseInt(Math.random() * 10);
+                if (guess == random) {
+                    document.getElementById('result').value = "You guessed it right!";
+                } else {
+                    document.getElementById('result').value = "TRY AGAIN!";
+                }
+                c++;
+            }
+        }
+    </script>
+</html>

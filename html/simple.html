@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Interest</title>
+</head>
+<body>
+    <h2>Simple Interest</h2>
+    <label for="principle">Enter Principle amount :</label>
+    <input type="text" id="principle" name="principle"><br><br>
+    
+    <label for="rate">Enter rate% :</label>
+    <input type="text" id="rate" name="rate"><br><br>
+
+    <label for="time">Enter time :</label>
+    <input type="text" id="time" name="time"><br><br>
+    
+    <input type="button" value="Calculate" onclick="calculateRes()">
+    
+    <br><br>
+    
+    <label for="result">Simple Interest :</label>
+    <input type="text" id="result" readonly>
+    
+    <script>
+        function calculateRes() {
+            var p = parseFloat(document.getElementById('principle').value);
+            var r = parseFloat(document.getElementById('rate').value);
+            var t = parseFloat(document.getElementById('time').value);
+            var si =  parseInt((p*t*r)/100 );
+            
+            document.getElementById('result').value = si;
+        }
+    </script>
+</body>
+</html>
