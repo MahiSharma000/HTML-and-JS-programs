@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            QUEUE SYSTEM
+        </title>
+    </head>
+    <body id="b1">
+        <h1>PLAY AREA QUEUE</h1>
+        <form name="f1">
+            <input type="text" id="n1" name="n1" placeholder="enter your name"/>
+        </form>
+        <button id="add" value="Add name" onclick="addName();">ENTER PLAY AREA</button>
+        <button id="exit" value="EXIT" onclick="exitName();">EXIT PLAY AREA</button>
+    </body>
+    <script>
+        function addName()
+        {
+            var h=document.createElement("h3");
+            var t=document.getElementById("n1").value;
+            var name=document.createTextNode(t);
+            h.appendChild(name);
+            var ob=document.getElementById("b1");
+            ob.appendChild(h);
+            document.getElementById("n1").value=" ";
+        }
+        function exitName()
+        {
+            var l=document.getElementById("b1");
+            var q=l.childNodes[11];
+            l.removeChild(q);
+        }
+    </script>
+</html>
