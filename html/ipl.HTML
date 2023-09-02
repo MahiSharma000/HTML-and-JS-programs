@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IPL Auction</title>
+    </head>
+    <style>
+        header{
+            background-color: #61e2eb;
+            color: #050505;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .container{
+            display: flex;
+            border:solid #050505;
+            padding: 5px;
+        }
+        .section{
+            flex: 1;
+            margin: 10px;
+            background-color: aliceblue;
+        }
+    </style>
+    <body>
+        <header>
+            <h1 id="auctionHeading">IPL Auction 2021-</h1>
+        </header>
+        <center><button id="editDate" onclick="edit()">EDIT DATE</button></center>
+        <div class="container">
+            <div class="section">
+                <h2>Players List</h2>
+                <input type="text" id="newPlayer" placeholder="Enter player name">
+                <button id="addPlayer" onclick="addp()">ADD PLAYER</button>
+                <div id="playerList"></div>
+            </div>
+            <div class="section">
+                <h2>Newly added batsman</h2>
+                <input type="text" id="newBatsman1" placeholder="Enter new batsman 1">
+                <input type="text" id="newBatsman2" placeholder="Enter new batsman 2">
+                <button id="replace" onclick="replace()">Replace Batsman</button>
+                <ul id="batsmenList">
+                    <li>Batsman 1</li>
+                    <li>Batsman 2</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Drop bowlers</h2>
+                <button id="drop" onclick="drop()">DROP BOWLER</button>
+                <ul id="bowlersList">
+                    <li>Bowler 1</li>
+                    <li>Bowler 2</li>
+                    <li>Bowler 3</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <script>
+    function edit(){
+    const currentDate = new Date().toLocaleDateString();
+    const heading = document.getElementById('auctionHeading');
+    const currentDateNode = document.createTextNode(currentDate);
+    heading.appendChild(currentDateNode);
+   }
+    function addp(){
+        const newPlayer = document.getElementById('newPlayer').value;
+        if(newPlayer.trim() !== ''){
+            const player=document.createElement('p');
+            player.textContent=newPlayer;
+            const pl=document.getElementById('playerList');
+            pl.appendChild(player);
+            document.getElementById('newPlayer').value='';
+        }
+    }
+    function replace(){
+        const newBatsman1 = document.getElementById('newBatsman1').value;
+        const newBatsman2 = document.getElementById('newBatsman2').value;
+        if(newBatsman1.trim() !== '' && newBatsman2.trim() !== ''){
+            const batsmenList = document.getElementById('batsmenList');
+            const batsman1 = batsmenList.getElementsByTagName('li')[0];
+            const batsman2 = batsmenList.getElementsByTagName('li')[1];
+            batsman1.textContent = newBatsman1;
+            batsman2.textContent = newBatsman2;
+            document.getElementById('newBatsman1').value='';
+            document.getElementById('newBatsman2').value='';
+        }
+    }
+    function drop(){
+        const bowlersList = document.getElementById('bowlersList');
+        const lastBowler=bowlersList.lastElementChild;
+        if(lastBowler){
+            bowlersList.removeChild(lastBowler);
+        }        
+    }
+    </script>
+</html>
