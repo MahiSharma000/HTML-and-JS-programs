@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Tracker</title>
+</head>
+<body>
+    <h1>COVID-19 Tracker</h1>
+
+    <div>
+        <h2>State 1</h2>
+        <label for="state1Cases">Newly Infected Cases:</label>
+        <input type="number" id="state1Cases">
+    </div>
+
+    <div>
+        <h2>State 2</h2>
+        <label for="state2Cases">Newly Infected Cases:</label>
+        <input type="number" id="state2Cases">
+    </div>
+
+    <div>
+        <h2>State 3</h2>
+        <label for="state3Cases">Newly Infected Cases:</label>
+        <input type="number" id="state3Cases">
+    </div>
+
+    <button id="updateButton">Update Counts</button>
+
+    <h2>Total Cases</h2>
+    <p id="totalCases"></p>
+
+    <h2>States with Maximum Cases</h2>
+    <p id="maxCasesStates"></p>
+
+    <script>
+        // Store the current counts for each state
+        let state1Count = 0;
+        let state2Count = 0;
+        let state3Count = 0;
+
+        const state1Input = document.getElementById('state1Cases');
+        const state2Input = document.getElementById('state2Cases');
+        const state3Input = document.getElementById('state3Cases');
+        const updateButton = document.getElementById('updateButton');
+        const totalCasesText = document.getElementById('totalCases');
+        const maxCasesText = document.getElementById('maxCasesStates');
+
+        // Function to update the total cases and find states with maximum cases
+        function updateCounts() {
+            state1Count += parseInt(state1Input.value);
+            state2Count += parseInt(state2Input.value);
+            state3Count += parseInt(state3Input.value);
+
+            const totalCases = state1Count + state2Count + state3Count;
+            totalCasesText.textContent = `Total Cases: ${totalCases}`;
+
+            const maxCases = Math.max(state1Count, state2Count, state3Count);
+            const maxCasesStates = [];
+
+            if (state1Count === maxCases) {
+                maxCasesStates.push('State 1');
+            }
+            if (state2Count === maxCases) {
+                maxCasesStates.push('State 2');
+            }
+            if (state3Count === maxCases) {
+                maxCasesStates.push('State 3');
+            }
+
+            if (maxCasesStates.length === 1) {
+                maxCasesText.textContent = `State with Maximum Cases: ${maxCasesStates[0]}`;
+            } else {
+                maxCasesText.textContent = `States with Maximum Cases (${maxCases}): ${maxCasesStates.join(', ')}`;
+            }
+
+            // Reset input fields
+            state1Input.value = '';
+            state2Input.value = '';
+            state3Input.value = '';
+        }
+
+        // Add an event listener to the button
+        updateButton.addEventListener('click', updateCounts);
+    </script>
+</body>
+</html>
