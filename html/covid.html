@@ -1,38 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Tracker</title>
+    <style>
+        header {
+            background-color: #225530;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        footer {
+            background-color: #225530;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #b7c9bc;
+        }
+        h2 {
+            color: #404740;
+            text-decoration: overline;
+        }
+        h3 {
+            color: #eef4ee;
+            text-decoration: overline;
+        }
+    </style>
 </head>
 <body>
-    <h1>COVID-19 Tracker</h1>
-
+   <center>
     <div>
-        <h2>State 1</h2>
-        <label for="state1Cases">Newly Infected Cases:</label>
-        <input type="number" id="state1Cases">
-    </div>
-
-    <div>
-        <h2>State 2</h2>
-        <label for="state2Cases">Newly Infected Cases:</label>
-        <input type="number" id="state2Cases">
-    </div>
-
-    <div>
-        <h2>State 3</h2>
-        <label for="state3Cases">Newly Infected Cases:</label>
-        <input type="number" id="state3Cases">
-    </div>
-
-    <button id="updateButton">Update Counts</button>
-
-    <h2>Total Cases</h2>
-    <p id="totalCases"></p>
-
-    <h2>States with Maximum Cases</h2>
-    <p id="maxCasesStates"></p>
+        <header>
+            <h1>COVID-19 Tracker</h1>
+        </header>
+    
+        <div class="container">
+            <div>
+                <h2>State 1</h2>
+                <label for="state1Cases">Newly Infected Cases:</label>
+                <input type="number" id="state1Cases">
+            </div>
+        
+            <div>
+                <h2>State 2</h2>
+                <label for="state2Cases">Newly Infected Cases:</label>
+                <input type="number" id="state2Cases">
+            </div>
+        
+            <div>
+                <h2>State 3</h2>
+                <label for="state3Cases">Newly Infected Cases:</label>
+                <input type="number" id="state3Cases">
+            </div>
+            <br>
+            <button id="updateButton">Update Counts</button>
+        
+            <h2>Total Cases</h2>
+            <p id="totalCases"></p>
+        </div>
+        <footer>
+            <h3>States with Maximum Cases</h3>
+            <p id="maxCasesStates"></p>
+        </footer>
+       </div>
+   </center>
 
     <script>
         // Store the current counts for each state
