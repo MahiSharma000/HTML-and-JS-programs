@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognitive Ability Analyzer</title>
+    <style>
+        .error {
+            color: red;
+        }
+        header {
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cognitive Ability Analyzer</h1>
+    </header>
+    <div class="container">
+        <form id="cognitiveForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br>
+            <div id="errorName" class="error"></div>
+    
+            <label for="brothers">Number of Brothers:</label>
+            <input type="number" id="brothers" min="0" max="5" required><br>
+            <div id="errorBrothers" class="error"></div>
+    
+            <label for="sisters">Number of Sisters:</label>
+            <input type="number" id="sisters" min="0" max="5" required><br>
+            <div id="errorSisters" class="error"></div>
+    
+            <label for="textBox2">Textbox 2:</label>
+            <input type="text" id="textBox2" readonly><br>
+    
+            <label for="textBox3">Textbox 3:</label>
+            <input type="text" id="textBox3" readonly><br>
+            <div id="errorTextBox3" class="error"></div>
+    
+            <label for="textBox4">Textbox 4:</label>
+            <input type="text" id="textBox4" readonly><br>
+            <div id="errorTextBox4" class="error"></div>
+    
+            <label for="textBox5">Textbox 5:</label>
+            <input type="text" id="textBox5" readonly><br>
+            <div id="errorTextBox5" class="error"></div>
+    
+            <label for="textBox6">Textbox 6:</label>
+            <input type="text" id="textBox6" readonly><br>
+    
+            <label for="brothercalculated">Number of Brothers Entered:</label>
+            <input type="text" id="brothercalculated" readonly><br>
+    
+            <label for="sistercalculated">Number of Sisters Entered:</label>
+            <input type="text" id="sistercalculated" readonly><br>
+    
+            <div id="result" class="error"></div>
+    
+            <button type="button" onclick="analyze()">Analyze</button>
+        </form>
+    </div>
+
+    <script>
+        function analyze() {
+            // Clear previous error messages
+            clearErrors();
+
+            // Get input values
+            var name = document.getElementById('name').value;
+            var numBrothers = parseInt(document.getElementById('brothers').value);
+            var numSisters = parseInt(document.getElementById('sisters').value);
+
+            // Validate input values
+            if (!name) {
+                showError('errorName', 'Please enter a name.');
+                return;
+            }
+
+            if (isNaN(numBrothers)) {
+                showError('errorBrothers', 'Please enter a valid number of brothers.');
+                return;
+            }
+
+            if (isNaN(numSisters)) {
+                showError('errorSisters', 'Please enter a valid number of sisters.');
+                return;
+            }
+
+
+            // Calculate values
+            var textBox2Value = numBrothers + 2;
+            var textBox3Value = textBox2Value * 2;
+            var textBox4Value = textBox3Value + 1;
+            var textBox5Value = textBox4Value * 5;
+            var textBox6Value = textBox5Value + numSisters;
+
+            // Update the corresponding textboxes
+            document.getElementById('textBox2').value = textBox2Value;
+            document.getElementById('textBox3').value = textBox3Value;
+            document.getElementById('textBox4').value = textBox4Value;
+            document.getElementById('textBox5').value = textBox5Value;
+            document.getElementById('textBox6').value = textBox6Value;
+
+            // Perform the cognitive ability analysis
+            var difference = textBox6Value - 25;
+
+            var calculatedBrothers = 0;
+            var calculatedSisters = 0;
+
+            if (difference >= 10) {
+                calculatedBrothers = Math.floor(difference / 10);
+                calculatedSisters = difference % 10;
+            } else if (difference > 0) {
+                calculatedSisters = difference;
+            }
+
+            document.getElementById('brothercalculated').value = calculatedBrothers;
+            document.getElementById('sistercalculated').value = calculatedSisters;
+
+            // Validate calculated values with user-entered values
+            if (calculatedBrothers === numBrothers && calculatedSisters === numSisters) {
+                document.getElementById('result').classList.remove('error');
+                document.getElementById('result').textContent = "Good memory and problem solving skills";
+            } else {
+                document.getElementById('result').classList.add('error');
+                document.getElementById('result').textContent = "Retardation in memory and problem solving skills";
+            }
+        }
+
+        function showError(id, message) {
+            document.getElementById(id).textContent = message;
+        }
+
+        function clearErrors() {
+            var errorDivs = document.querySelectorAll('.error');
+            errorDivs.forEach(function (errorDiv) {
+                errorDiv.textContent = '';
+            });
+        }
+    </script>
+</body>
+</html>
