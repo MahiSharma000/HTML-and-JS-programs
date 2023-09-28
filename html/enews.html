@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Newspaper Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .newspaper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            grid-gap: 20px;
+            padding: 20px;
+        }
+
+        .article {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <div class="article">
+            <h2>Headline 1</h2>
+            <p>This is the content of the first article. It can span multiple lines and paragraphs.</p>
+        </div>
+        <div class="article">
+            <h2>Headline 2</h2>
+            <p>This is the content of the second article. It can span multiple lines and paragraphs.</p>
+        </div>
+        <div class="article">
+            <h2>Headline 3</h2>
+            <p>This is the content of the third article. It can span multiple lines and paragraphs.</p>
+        </div>
+        <!-- Add more articles as needed -->
+    </div>
+</body>
+</html>
